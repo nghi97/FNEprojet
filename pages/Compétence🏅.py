@@ -163,13 +163,6 @@ def plot(name):
     
     
     
-bdd=pd.read_excel("C://Users//ndgng//Downloads//RADAR-1.xlsm","Notes Traitées",index_col=False)
-bdd_nonmoyglobal=bdd.drop(bdd.index[-1],axis=0)
-bdd_nonmoyglobal=bdd_nonmoyglobal.drop(['Nom'],axis=1)
-list_index=bdd_nonmoyglobal['Prénom'].tolist()
-bdd_nonmoyglobal=bdd_nonmoyglobal.drop(['Prénom'],axis=1)
-c=pd.Series(list_index)
-bdd_nonmoyglobal=bdd_nonmoyglobal.set_index(c)
     
 def jauge(x):
     D1=go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x]['Domaine 1'],domain = {'x': [0, 1], 'y': [0, 1]},
