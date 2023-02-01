@@ -4,7 +4,7 @@ Created on Fri Jan 27 23:53:38 2023
 
 @author: ndgng
 """
-$ pip install matplotlib
+!pip install matplotlib
 import streamlit as st
 import numpy as np
 import pandas as pd
