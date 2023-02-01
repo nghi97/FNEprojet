@@ -21,7 +21,7 @@ def load_data(database):
     df=pd.read_csv(database,encoding='cp1252')
     return df
 
-df=load_data('C:\\Users\\ndgng\\Downloads\\q1_q82.csv')
+df=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/q1_q82.csv')
 
 scoring = pd.DataFrame(columns = ['Nom.complet', 'dom_01_CO', 'dom_01_CU', 'dom_02_CO', 'dom_02_CU', 'dom_03_CO', 'dom_03_CU',
                                          'dom_04_CO', 'dom_04_CU', 'dom_05_CO', 'dom_05_CU'])
