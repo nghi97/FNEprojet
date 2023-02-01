@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-bdd=pd.read_excel("C://Users//ndgng//Downloads//RADAR-1.xlsm","Notes Traitées",index_col=False)
+bdd=pd.read_excel("https://github.com/nghi97/FNEprojet/blob/main/RADAR-1.xlsm","Notes Traitées",index_col=False)
 bdd_nonmoyglobal=bdd.drop(bdd.index[-1],axis=0)
 bdd_nonmoyglobal=bdd_nonmoyglobal.drop(['Nom'],axis=1)
 list_index=bdd_nonmoyglobal['Prénom'].tolist()
