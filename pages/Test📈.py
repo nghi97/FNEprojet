@@ -23,7 +23,7 @@ bdd_nonmoyglobal=bdd_nonmoyglobal.drop(['Prénom'],axis=1)
 c=pd.Series(list_index)
 bdd_nonmoyglobal=bdd_nonmoyglobal.set_index(c)
     
-
+domain=["Domaine 1","Domaine 5"]
 
 
 
