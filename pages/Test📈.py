@@ -23,44 +23,9 @@ bdd_nonmoyglobal=bdd_nonmoyglobal.drop(['Prénom'],axis=1)
 c=pd.Series(list_index)
 bdd_nonmoyglobal=bdd_nonmoyglobal.set_index(c)
     
-def jauge(x):
-    D1=go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x]['Domaine 1'],domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "Domaine 1", 'font': {'size': 10}},
-               gauge={'bar':{'color':'red'},
-                     'axis':{'range':[None,2.22]}})
-    D5=go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x]['Domaine 5'],domain = {'x': [0, 1], 'y': [0, 1]},
-               title = {'text': "Domaine 5", 'font': {'size': 10}},
-                gauge={'bar':{'color':'green'},
-                       'axis':{'range':[None,2.22]}})
-    fig = make_subplots(
-        rows=1,
-        cols=2,
-        specs=[[{'type' : 'indicator'}, {'type' : 'indicator'}]],x_title=x
-        )
-    fig.append_trace(D1, row=1, col=1)
-    fig.append_trace(D5, row=1, col=2)
-    fig.update_layout(height=200, width=300)
-    fig.show()
-    
-    
-def jauge1(x,y):
-    plot=go.Figure(go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x][y],domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': x+": "+ y, 'font': {'size': 25}},
-               gauge={'bar':{'color':'red'},
-                     'axis':{'range':[None,2.22]}}))
-    
-    plot.show()
-        
-domain=["Domaine 1","Domaine 5"]       
-st.sidebar.markdown("# Test :chart_with_upwards_trend:")       
-st.title(" Test")
 
 
-cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
-
-    
-    
 
     
 
@@ -70,6 +35,7 @@ MetricSlider03 = st.selectbox("Domaine", domain)
 if st.button('Regarder le graphique'):
     fig=go.Figure(go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03],domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
+                delta = {'reference': bdd.loc[3][MetricSlider03]},
                gauge={'bar':{'color':'red'},
                      'axis':{'range':[None,2.22]}}))
     st.plotly_chart(fig, use_container_width=True)
