@@ -68,4 +68,9 @@ cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 MetricSlider02 = st.selectbox("Choisir l'individu", list_index)
 MetricSlider03 = st.selectbox("Domaine", domain)
 if st.button('Regarder le graphique'):
-    st.pyplot(jauge1(MetricSlider02,MetricSlider03),clear_figure=True)
+    fig=go.Figure(go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03],domain = {'x': [0, 1], 'y': [0, 1]},
+                title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
+               gauge={'bar':{'color':'red'},
+                     'axis':{'range':[None,2.22]}}))
+    st.pyplot(fig.show())
+    st.set_option('deprecation.showPyplotGlobalUse', False)
