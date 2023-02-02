@@ -33,7 +33,7 @@ domain=["Domaine 1","Domaine 5"]
 MetricSlider02 = st.selectbox("Choisir l'individu", list_index)
 MetricSlider03 = st.selectbox("Domaine", domain)
 if st.button('Regarder le graphique'):
-    fig=go.Figure(go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03],domain = {'x': [0, 1], 'y': [0, 1]},
+    fig=go.Figure(go.Indicator(mode = "gauge+number+delta",value = bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03],domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
                 delta = {'reference': bdd.loc[3][MetricSlider03]},
                gauge={'bar':{'color':'red'},
