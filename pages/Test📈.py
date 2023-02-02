@@ -36,7 +36,7 @@ if st.button('Regarder le graphique'):
     fig=go.Figure(go.Indicator(mode = "gauge+number+delta",value = bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03],domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
                 delta = {'reference': bdd.loc[3][MetricSlider03]},
-               gauge={'bar':{'color':'red'},
+               gauge={'bar':{'color':'green'},
                      'axis':{'range':[None,2.22]}}))
     st.plotly_chart(fig, use_container_width=True)
     st.set_option('deprecation.showPyplotGlobalUse', False)
