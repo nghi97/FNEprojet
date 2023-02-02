@@ -72,5 +72,5 @@ if st.button('Regarder le graphique'):
                 title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
                gauge={'bar':{'color':'red'},
                      'axis':{'range':[None,2.22]}}))
-    st.pyplot(fig.show())
+    st.plotly_chart(fig, use_container_width=True)
     st.set_option('deprecation.showPyplotGlobalUse', False)
