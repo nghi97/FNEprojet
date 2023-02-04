@@ -22,45 +22,46 @@ def load_data(database):
     return df
 
 df=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/q1_q82.csv')
+df2=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/bdd%20recode%20version%20du%2002-12%2C%202%20repondants.csv')
 
 scoring = pd.DataFrame(columns = ['Nom.complet', 'dom_01_CO', 'dom_01_CU', 'dom_02_CO', 'dom_02_CU', 'dom_03_CO', 'dom_03_CU',
                                          'dom_04_CO', 'dom_04_CU', 'dom_05_CO', 'dom_05_CU'])
 
-scoring['Nom.complet'] = df['r.Nom.complet']
+scoring['Nom.complet'] = df2['r.Nom.complet']
 
 #Domaine1
-dom_01_co = df.columns[np.r_[15:23,24,27:35,39:47]]
-scoring['dom_01_CO'] = df[dom_01_co].sum(axis=1).round(1)
+dom_01_co = df2.columns[np.r_[15:23,24,27:35,39:47]]
+scoring['dom_01_CO'] = df2[dom_01_co].sum(axis=1).round(1)
 
-dom_01_cu = df.columns[np.r_[1:15,23,25:27,35:39]]
-scoring['dom_01_CU'] = df[dom_01_cu].sum(axis=1).round(1)
+dom_01_cu = df2.columns[np.r_[1:15,23,25:27,35:39]]
+scoring['dom_01_CU'] = df2[dom_01_cu].sum(axis=1).round(1)
 # Domaine 2
-dom_02_co = df.columns[np.r_[47:52,58:63]]
-scoring['dom_02_CO'] = df[dom_02_co].sum(axis=1).round(1)
+dom_02_co = df2.columns[np.r_[47:52,58:63]]
+scoring['dom_02_CO'] = df2[dom_02_co].sum(axis=1).round(1)
 
-dom_02_cu = df.columns[np.r_[52:58,63:81]]
-scoring['dom_02_CU'] = df[dom_02_cu].sum(axis=1).round(1)
+dom_02_cu = df2.columns[np.r_[52:58,63:81]]
+scoring['dom_02_CU'] = df2[dom_02_cu].sum(axis=1).round(1)
 
 # Domaine 3
-dom_03_co = df.columns[np.r_[86:125,129:132]]
-scoring['dom_03_CO'] = df[dom_03_co].sum(axis=1).round(1)
+dom_03_co = df2.columns[np.r_[86:125,129:132]]
+scoring['dom_03_CO'] = df2[dom_03_co].sum(axis=1).round(1)
 
-dom_03_cu = df.columns[np.r_[81:86,125:129]]
-scoring['dom_03_CU'] = df[dom_03_cu].sum(axis=1).round(1)
+dom_03_cu = df2.columns[np.r_[81:86,125:129]]
+scoring['dom_03_CU'] = df2[dom_03_cu].sum(axis=1).round(1)
 
 # Domaine 4
-dom_04_co = df.columns[np.r_[132:137,140,143:146,149:153]]
-scoring['dom_04_CO'] = df[dom_04_co].sum(axis=1).round(1)
+dom_04_co = df2.columns[np.r_[132:137,140,143:146,149:153]]
+scoring['dom_04_CO'] = df2[dom_04_co].sum(axis=1).round(1)
 
-dom_04_cu = df.columns[np.r_[137:140,141:143,146:149]] 
-scoring['dom_04_CU'] = df[dom_04_cu].sum(axis=1).round(1)
+dom_04_cu = df2.columns[np.r_[137:140,141:143,146:149]] 
+scoring['dom_04_CU'] = df2[dom_04_cu].sum(axis=1).round(1)
 
 # Domaine 5
-dom_05_co = df.columns[np.r_[153:170,180:183]]
-scoring['dom_05_CO'] = df[dom_05_co].sum(axis=1).round(1)
+dom_05_co = df2.columns[np.r_[153:170,180:183]]
+scoring['dom_05_CO'] = df2[dom_05_co].sum(axis=1).round(1)
 
-dom_05_cu = df.columns[np.r_[170:180]]
-scoring['dom_05_CU'] = df[dom_05_cu].sum(axis=1).round(1)
+dom_05_cu = df2.columns[np.r_[170:180]]
+scoring['dom_05_CU'] = df2[dom_05_cu].sum(axis=1).round(1)
 
 
 #to list les étudiants
