@@ -147,8 +147,8 @@ with col1:
 with col2:
     st.write("")
     st.write("")
-    fig=plot(Nomcomplet2)
-    st.plotly_chart(fig)
+    
+    st.pylot(plot(Nomcomplet2))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
