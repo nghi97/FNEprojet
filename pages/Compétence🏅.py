@@ -116,8 +116,7 @@ def plot(names):
             ha="center", color="#000000"
         )
     
-    
-        plt.show()
+    plt.show()
     
     
     
