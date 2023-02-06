@@ -81,7 +81,7 @@ def plot(name):
     baker = PyPizza(
         params=domaines,           # list of parameters
         min_range=min_range,        # min range values
-        max_range=max_range,
+        max_range=max_range,        # max range values
         background_color="#EBEBE9",     # background color
         straight_line_color="#EBEBE9",  # color for straight lines
         straight_line_lw=1,             # linewidth for straight lines
@@ -90,7 +90,7 @@ def plot(name):
         inner_circle_size=19.7          # size of inner circle
     )
     fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet'] == name, "domaine_01":"domaine_05"],
+        scoring.loc[scoring['Nom.complet']==name,"domaine_01":"domaine_05"].values.tolist()[0],
         figsize=(12, 13),                # adjust figsize according to your need
         color_blank_space="same",        # use same color to fill blank space
         slice_colors=slice_colors,       # color for individual slices
@@ -99,7 +99,7 @@ def plot(name):
         blank_alpha=0.4,                 # alpha for blank-space colors
         kwargs_slices=dict(
         edgecolor="#F2F2F2", zorder=2, linewidth=1),    # values to be used when plotting slices
-        kwargs_params=dict(color="#000000", fontsize=12, va="center"),   # values to be used when adding parameter
+        kwargs_params=dict(color="#000000", fontsize=14, va="center"),   # values to be used when adding parameter
         kwargs_values=dict(
             color="#000000", fontsize=11,
             zorder=3,
@@ -111,7 +111,7 @@ def plot(name):
     )
     # add title
     fig.text(
-        0.515, 0.975, "Compétences numériques : {}".format(name), size=20,
+        0.515, 0.940, "Compétences numériques : {}".format(repondant), size=20,
         ha="center", color="#000000"
     )
     
