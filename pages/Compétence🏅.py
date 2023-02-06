@@ -66,8 +66,8 @@ domaines = ["Littération de \nl'information et des données",
             'Environnement numérique \net résolution de problèmes']
 
 # color for the slices and text
-slice_colors = ["#1A78CF"] * 2 + ["#FF9300"] * 2  + ["#9A8C98"] * 2 + ["#78cf1a"] * 2 + ["#DA2C38"] * 2
-text_colors = ["#000000"] * 10
+slice_colors = ["#1A78CF"] + ["#FF9300"] + ["#9A8C98"] + ["#78cf1a"] + ["#DA2C38"]
+text_colors = ["#000000"] * 5
 
 
     
