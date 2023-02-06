@@ -93,7 +93,7 @@ def plot(names):
         
         )
     fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet'].isin(name),"domaine_01":"domaine_05"].values.tolist()[0],
+        scoring.loc[scoring['Nom.complet'].isin(names),"domaine_01":"domaine_05"].values.tolist()[0],
         figsize=(12, 13),                # adjust figsize according to your need
         color_blank_space="same",        # use same color to fill blank space
         slice_colors=slice_colors,       # color for individual slices
@@ -116,7 +116,7 @@ def plot(names):
     
     # add title
     fig.text(
-            0.515, 0.940, "Compétences numériques : {}".format(name), size=20,
+            0.515, 0.940, "Compétences numériques : {}".format(names), size=20,
             ha="center", color="#000000"
         )
     
