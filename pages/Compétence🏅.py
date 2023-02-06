@@ -136,7 +136,9 @@ st.write("")
 cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
 with col1:
-    MetricSlider01 = st.selectbox("Choisir l'individu", repondants)
+    Nom= st.text_input(label="Nom", placeholder="Nom")
+    Prenom=st.text_input(label="Prénom", placeholder="Prénom")
+    MetricSlider01 = Nom+" "+Prenom
     
 
 
