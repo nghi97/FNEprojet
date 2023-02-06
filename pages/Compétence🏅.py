@@ -78,7 +78,8 @@ text_colors = ["#000000"] * 5
 def plot(names):
     min_range = [0, 0, 0, 0, 0]
     max_range = [100, 100, 100, 100, 100]
-    for name in range(len(names)):
+    for name in range(len(names)-1):
+        rep=scoring.loc[scoring['Nom.complet']==name,"domaine_01":"domaine_05"].values.tolist()[0]
         baker = PyPizza(
             params=domaines,           # list of parameters
             min_range=min_range,        # min range values
@@ -91,7 +92,7 @@ def plot(names):
             inner_circle_size=19.7          # size of inner circle
         )
         fig, ax = baker.make_pizza(
-            scoring.loc[scoring['Nom.complet']==name,"domaine_01":"domaine_05"].values.tolist()[0],
+            rep,
             figsize=(12, 13),                # adjust figsize according to your need
             color_blank_space="same",        # use same color to fill blank space
             slice_colors=slice_colors,       # color for individual slices
