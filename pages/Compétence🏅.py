@@ -116,7 +116,7 @@ def plot(names):
             ha="center", color="#000000"
         )
     
-    plt.show()
+        plt.show()
     
     
     
@@ -147,7 +147,7 @@ with col1:
 with col2:
     st.write("")
     st.write("")
-    st.pyplot(plot(Nomcomplet2))
+    st.plotly_chart(plot(Nomcomplet2))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
