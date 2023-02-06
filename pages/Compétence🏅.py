@@ -111,7 +111,7 @@ def plot(name):
     )
     # add title
     fig.text(
-        0.515, 0.940, "Compétences numériques : {}".format(repondant), size=20,
+        0.515, 0.940, "Compétences numériques : {}".format(name), size=20,
         ha="center", color="#000000"
     )
     
@@ -148,6 +148,8 @@ with col1:
     
     
 with col2:
+    st.write("")
+    st.write("")
     if st.button('Regarder le graphique'):
         
         st.pyplot(plot(Nomcomplet))
