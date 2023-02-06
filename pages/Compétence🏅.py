@@ -76,9 +76,12 @@ text_colors = ["#000000"] * 10
 
     
 def plot(name):
-    
+    min_range = [0, 0, 0, 0, 0]
+    max_range = [100, 100, 100, 100, 100]
     baker = PyPizza(
         params=domaines,           # list of parameters
+        min_range=min_range,        # min range values
+        max_range=max_range,
         background_color="#EBEBE9",     # background color
         straight_line_color="#EBEBE9",  # color for straight lines
         straight_line_lw=1,             # linewidth for straight lines
