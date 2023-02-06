@@ -33,9 +33,9 @@ domain=["Domaine 1","Domaine 5"]
 MetricSlider02 = st.selectbox("Choisir l'individu", list_index)
 MetricSlider03 = st.selectbox("Domaine", domain)
 if st.button('Regarder le graphique'):
-    fig=go.Figure(go.Indicator(mode = "gauge+number+delta",value = (bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03])*round(10 / 2.22,2),domain = {'x': [0, 1], 'y': [0, 1]},
+    fig=go.Figure(go.Indicator(mode = "gauge+number+delta",value = (bdd_nonmoyglobal.loc[MetricSlider02][MetricSlider03])*10 / 2.22,domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text':MetricSlider02 +": "+ MetricSlider03, 'font': {'size': 25}},
-                delta = {'reference': bdd.loc[3][MetricSlider03] * round(10 / 2.22,2)},
+                delta = {'reference': bdd.loc[3][MetricSlider03] * 10 / 2.22},
                gauge={'bar':{'color':'green'},
                      'axis':{'range':[None,10]}}))
     st.plotly_chart(fig, use_container_width=True)
