@@ -90,7 +90,7 @@ def plot(name):
         inner_circle_size=19.7          # size of inner circle
     )
     fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet'].isin(list(name)),"domaine_01":"domaine_05"].values.tolist()[0],
+        scoring.loc[scoring['Nom.complet'].isin(name),"domaine_01":"domaine_05"].values.tolist()[0],
         figsize=(12, 13),                # adjust figsize according to your need
         color_blank_space="same",        # use same color to fill blank space
         slice_colors=slice_colors,       # color for individual slices
@@ -137,6 +137,7 @@ cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
 with col1:
     Nomcomplet2=st.multiselect(label="Nom et Prénom",options=repondants, max_selections=1)
+    Nom=Nomcomplet2[0]
     #Nomcomplet= st.text_input(label="Nom et Prénom", placeholder="Par exemple: anonfirstname31 anonlastname31")
     st.write("") 
     
@@ -147,7 +148,7 @@ with col1:
 with col2:
     st.write("")
     st.write("")
-    st.pyplot(plot(Nomcomplet2))
+    st.pyplot(plot(Nom))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
