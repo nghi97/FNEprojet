@@ -116,7 +116,7 @@ def plot(names):
             ha="center", color="#000000"
         )
     
-        plt.show()
+        fig.show()
     
     
     
@@ -148,7 +148,7 @@ with col2:
     st.write("")
     st.write("")
     
-    st.pylot(plot(Nomcomplet2))
+    st.pyplot(plot(Nomcomplet2))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
