@@ -78,7 +78,7 @@ text_colors = ["#000000"] * 5
 def plot(names):
     min_range = [0, 0, 0, 0, 0]
     max_range = [100, 100, 100, 100, 100]
-    for name in range(len(names)-1):
+    for name in range(len(names)):
         baker = PyPizza(
             params=domaines,           # list of parameters
             min_range=min_range,        # min range values
@@ -116,7 +116,7 @@ def plot(names):
             ha="center", color="#000000"
         )
     
-        fig.show()
+        plt.show()
     
     
     
