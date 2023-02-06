@@ -90,7 +90,7 @@ def plot(name):
         inner_circle_size=19.7          # size of inner circle
     )
     fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet'] == name, "domaine_01":"domaine_05"].values.tolist()[0],
+        scoring.loc[scoring['Nom.complet'] == name, "domaine_01":"domaine_05"].values.tolist(),
         figsize=(12, 13),                # adjust figsize according to your need
         color_blank_space="same",        # use same color to fill blank space
         slice_colors=slice_colors,       # color for individual slices
@@ -148,8 +148,10 @@ with col1:
     
     
 with col2:
-    st.pyplot(plot(Nomcomplet))
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    if st.button('Regarder le graphique'):
+        
+        st.pyplot(plot(Nomcomplet))
+        st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
     st.write("")
