@@ -21,61 +21,49 @@ def load_data(database):
     df=pd.read_csv(database,encoding='cp1252')
     return df
 
-df=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/q1_q82.csv')
-df2=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/bdd%20recode%20version%20du%2002-12%2C%202%20repondants.csv')
+df=load_data('https://raw.githubusercontent.com/nghi97/FNEprojet/main/q1_q82%20(2).csv')
 
-scoring = pd.DataFrame(columns = ['Nom.complet', 'dom_01_CO', 'dom_01_CU', 'dom_02_CO', 'dom_02_CU', 'dom_03_CO', 'dom_03_CU',
-                                         'dom_04_CO', 'dom_04_CU', 'dom_05_CO', 'dom_05_CU'])
+scoring = pd.DataFrame(columns = ['Nom.complet', "domaine_01", 
+                                                 'domaine_02', 
+                                                 'domaine_03', 
+                                                 'domaine_04', 
+                                                 'domaine_05'])
 
-scoring['Nom.complet'] = df2['r.Nom.complet']
+scoring['Nom.complet'] = df['r.Nom.complet']
 
 #Domaine1
-dom_01_co = df2.columns[np.r_[15:23,24,27:35,39:47]]
-scoring['dom_01_CO'] = df2[dom_01_co].sum(axis=1).round(1)
+dom_01 = df.columns[np.r_[1:57]]
+scoring["domaine_01"] = (df[dom_01].sum(axis=1) * 100 / 24.5).round(1)
 
-dom_01_cu = df2.columns[np.r_[1:15,23,25:27,35:39]]
-scoring['dom_01_CU'] = df2[dom_01_cu].sum(axis=1).round(1)
 # Domaine 2
-dom_02_co = df2.columns[np.r_[47:52,58:63]]
-scoring['dom_02_CO'] = df2[dom_02_co].sum(axis=1).round(1)
-
-dom_02_cu = df2.columns[np.r_[52:58,63:81]]
-scoring['dom_02_CU'] = df2[dom_02_cu].sum(axis=1).round(1)
+dom_02 = df.columns[np.r_[57:104]]
+scoring["domaine_02"] = (df[dom_02].sum(axis=1) * 100 / 18.5).round(1)
 
 # Domaine 3
-dom_03_co = df2.columns[np.r_[86:125,129:132]]
-scoring['dom_03_CO'] = df2[dom_03_co].sum(axis=1).round(1)
-
-dom_03_cu = df2.columns[np.r_[81:86,125:129]]
-scoring['dom_03_CU'] = df2[dom_03_cu].sum(axis=1).round(1)
+dom_03 = df.columns[np.r_[104:163]]
+scoring['domaine_03'] = (df[dom_03].sum(axis=1) * 100 / 36).round(1)
 
 # Domaine 4
-dom_04_co = df2.columns[np.r_[132:137,140,143:146,149:153]]
-scoring['dom_04_CO'] = df2[dom_04_co].sum(axis=1).round(1)
-
-dom_04_cu = df2.columns[np.r_[137:140,141:143,146:149]] 
-scoring['dom_04_CU'] = df2[dom_04_cu].sum(axis=1).round(1)
+dom_04 = df.columns[np.r_[163:181]]
+scoring['domaine_04'] = (df[dom_04].sum(axis=1) * 100 / 18.75).round(1)
 
 # Domaine 5
-dom_05_co = df2.columns[np.r_[153:170,180:183]]
-scoring['dom_05_CO'] = df2[dom_05_co].sum(axis=1).round(1)
-
-dom_05_cu = df2.columns[np.r_[170:180]]
-scoring['dom_05_CU'] = df2[dom_05_cu].sum(axis=1).round(1)
+dom_05 = df.columns[np.r_[181:214]]
+scoring['domaine_05'] = (df[dom_05].sum(axis=1) * 100 / 20.75).round(1)
 
 
-#to list les étudiants
-etudiants = scoring['Nom.complet'].tolist()
+#to list les repondants
+repondants = scoring['Nom.complet'].tolist()
 
 
 
     
     
-sous_domaines = ["Culture numérique", "Compétences numérique",
-                 "Culture numérique", "Compétences numérique",
-                 "Culture numérique", "Compétences numérique",
-                 "Culture numérique", "Compétences numérique",
-                 "Culture numérique", "Compétences numérique"]
+domaines = ["Littération de \nl'information et des données",
+            'Communication \net collaboration', 
+            'Création de contenu', 
+            'Sécurité',
+            'Environnement numérique \net résolution de problèmes']
 
 # color for the slices and text
 slice_colors = ["#1A78CF"] * 2 + ["#FF9300"] * 2  + ["#9A8C98"] * 2 + ["#78cf1a"] * 2 + ["#DA2C38"] * 2
@@ -90,7 +78,7 @@ text_colors = ["#000000"] * 10
 def plot(name):
     
     baker = PyPizza(
-        params=sous_domaines,           # list of parameters
+        params=domaines,           # list of parameters
         background_color="#EBEBE9",     # background color
         straight_line_color="#EBEBE9",  # color for straight lines
         straight_line_lw=1,             # linewidth for straight lines
@@ -99,7 +87,7 @@ def plot(name):
         inner_circle_size=19.7          # size of inner circle
     )
     fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet'] == name, 'dom_01_CO':'dom_05_CU'].values.tolist()[0],
+        scoring.loc[scoring['Nom.complet'] == name, "domaine_01":"domaine_05"].values.tolist()[0],
         figsize=(12, 13),                # adjust figsize according to your need
         color_blank_space="same",        # use same color to fill blank space
         slice_colors=slice_colors,       # color for individual slices
@@ -124,75 +112,12 @@ def plot(name):
         ha="center", color="#000000"
     )
     
-    # add text
-    fig.text(
-    0.515, 0.940, "Littération de l'information et des données          Communication et collaboration", size=14,
-    ha="center", color="#000000"
-    )
-    fig.text(
-    0.515, 0.905, "Création de contenu         Sécurité         Environnement numérique et résolution de problèmes", size=14,
-    ha="center", color="#000000"
-    )
-
-    # add rectangles
-    fig.patches.extend([
-    plt.Rectangle(
-        (0.154, 0.935), 0.025, 0.021, fill=True, color="#1A78CF",
-        transform=fig.transFigure, figure=fig
-    ),
-    plt.Rectangle(
-        (0.550, 0.935), 0.025, 0.021, fill=True, color="#FF9300",
-        transform=fig.transFigure, figure=fig
-    ),
-    plt.Rectangle(
-        (0.101, 0.900), 0.025, 0.021, fill=True, color="#9A8C98",
-        transform=fig.transFigure, figure=fig
-    ),
-    plt.Rectangle(
-        (0.310, 0.900), 0.025, 0.021, fill=True, color="#78cf1a",
-        transform=fig.transFigure, figure=fig
-    ),
-    plt.Rectangle(
-        (0.425, 0.900), 0.025, 0.021, fill=True, color="#D70232",
-        transform=fig.transFigure, figure=fig
-    ),
-    ])
-    
-  
     
     plt.show()
     
     
     
     
-def jauge(x):
-    D1=go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x]['Domaine 1'],domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "Domaine 1", 'font': {'size': 10}},
-               gauge={'bar':{'color':'red'},
-                     'axis':{'range':[None,2.22]}})
-    D5=go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x]['Domaine 5'],domain = {'x': [0, 1], 'y': [0, 1]},
-               title = {'text': "Domaine 5", 'font': {'size': 10}},
-                gauge={'bar':{'color':'green'},
-                       'axis':{'range':[None,2.22]}})
-    fig = make_subplots(
-        rows=1,
-        cols=2,
-        specs=[[{'type' : 'indicator'}, {'type' : 'indicator'}]],x_title=x
-        )
-    fig.append_trace(D1, row=1, col=1)
-    fig.append_trace(D5, row=1, col=2)
-    fig.update_layout(height=200, width=300)
-    fig.show()
-        
-def jauge1(x,y):
-    plot=go.Figure(go.Indicator(mode = "gauge+number",value = bdd_nonmoyglobal.loc[x][y],domain = {'x': [0, 0.5], 'y': [0, 0.5]},
-                title = {'text': x+": "+ y, 'font': {'size': 10}},
-               gauge={'bar':{'color':'red'},
-                     'axis':{'range':[None,2.22]}}))
-    
-    plot.show()
-        
-domain=["Domaine 1","Domaine 5"]       
         
 st.title("Approfondissement des visualisations des Digitales Compétence")
 st.sidebar.markdown("# Compétence :sports_medal:")
@@ -208,7 +133,7 @@ st.write("")
 cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
 with col1:
-    MetricSlider01 = st.selectbox("Choisir l'individu", etudiants)
+    MetricSlider01 = st.selectbox("Choisir l'individu", repondants)
     
 
 
