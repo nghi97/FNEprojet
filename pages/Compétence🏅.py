@@ -76,7 +76,7 @@ text_colors = ["#000000"] * 5
 
     
 def plot(names):
-    names=list(names)[0]
+    names=list(names)[-1]
     min_range = [0, 0, 0, 0, 0]
     max_range = [100, 100, 100, 100, 100]
     #for name in range(len(names)-1):
