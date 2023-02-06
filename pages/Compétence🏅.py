@@ -136,10 +136,8 @@ st.write("")
 cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
 with col1:
+    Nomcomplet2=st.multiselect(label="Nom et Prénom", repondants, max_selections=1)
     #Nomcomplet= st.text_input(label="Nom et Prénom", placeholder="Par exemple: anonfirstname31 anonlastname31")
-    Nomcomplet2=st.multiselect(label="Nom et Prénom", repondants,max_selections=1)
-
-
     st.write("") 
     
     
