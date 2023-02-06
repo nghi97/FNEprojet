@@ -136,9 +136,8 @@ st.write("")
 cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 
 with col1:
-    Nom= st.text_input(label="Nom", placeholder="Nom")
-    Prenom=st.text_input(label="Prénom", placeholder="Prénom")
-    MetricSlider01 = Nom+" "+Prenom
+    Nomcomplet= st.text_input(label="Nom et Prénom", placeholder="Nom + Prénom")
+   
     
 
 
@@ -149,7 +148,7 @@ with col1:
     
     
 with col2:
-    st.pyplot(plot(MetricSlider01))
+    st.pyplot(plot(Nomcomplet))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
