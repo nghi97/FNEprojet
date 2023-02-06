@@ -138,7 +138,7 @@ cole, col1, cole, col2, cole = st.columns([0.1, 1, 0.05, 1, 0.1])
 with col1:
     Nomcomplet= st.text_input(label="Nom et Prénom", placeholder="Par exemple: anonfirstname31 anonlastname31")
    
-    
+    Nomcomplet2=st.multiselect(label="Nom et Prénom", repondants,max_selections=1)
 
 
     st.write("") 
@@ -150,10 +150,8 @@ with col1:
 with col2:
     st.write("")
     st.write("")
-    if st.button('Regarder le graphique'):
-        
-        st.pyplot(plot(Nomcomplet))
-        st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot(plot(Nomcomplet2))
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     
     
     st.write("")
