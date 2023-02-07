@@ -79,50 +79,49 @@ def plot(names):
     names=list(names)
     min_range = [0, 0, 0, 0, 0]
     max_range = [100, 100, 100, 100, 100]
-    #for name in range(len(names)-1):
-        #rep=scoring.loc[scoring['Nom.complet']==name,"domaine_01":"domaine_05"].values.tolist()[0]
-    baker = PyPizza(
-        params=domaines,           # list of parameters
-        min_range=min_range,        # min range values
-        max_range=max_range,        # max range values
-        background_color="#EBEBE9",     # background color
-        straight_line_color="#EBEBE9",  # color for straight lines
-        straight_line_lw=1,             # linewidth for straight lines
-        last_circle_lw=0,               # linewidth of last circle
-        other_circle_lw=0,              # linewidth for other circles
-        inner_circle_size=19.7          # size of inner circle
+    for i in range(len(names)-1):
+        rep=scoring.loc[scoring['Nom.complet']==names[i],"domaine_01":"domaine_05"].values.tolist()[0]
+        baker = PyPizza(
+            params=domaines,           # list of parameters
+            min_range=min_range,        # min range values
+            max_range=max_range,        # max range values
+            background_color="#EBEBE9",     # background color
+            straight_line_color="#EBEBE9",  # color for straight lines
+            straight_line_lw=1,             # linewidth for straight lines
+            last_circle_lw=0,               # linewidth of last circle
+            other_circle_lw=0,              # linewidth for other circles
+            inner_circle_size=19.7          # size of inner circle
         
         )
-    fig, ax = baker.make_pizza(
-        scoring.loc[scoring['Nom.complet']==names[0],"domaine_01":"domaine_05"].values.tolist()[0],
-        figsize=(12, 13),                # adjust figsize according to your need
-        color_blank_space="same",        # use same color to fill blank space
-        slice_colors=slice_colors,       # color for individual slices
-        value_colors=text_colors,        # color for the value-text
-        value_bck_colors=slice_colors,   # color for the blank spaces
-        blank_alpha=0.4,                 # alpha for blank-space colors
-        kwargs_slices=dict(
-        edgecolor="#F2F2F2", zorder=2, linewidth=1),    # values to be used when plotting slices
-        kwargs_params=dict(color="#000000", fontsize=14, va="center"),   # values to be used when adding parameter
-        kwargs_values=dict(
-            color="#000000", fontsize=11,
-            zorder=3,
-            bbox=dict(
-            edgecolor="#000000", facecolor="cornflowerblue",
-            boxstyle="round,pad=0.2", lw=1
-                
+        fig, ax = baker.make_pizza(
+            rep,
+            figsize=(12, 13),                # adjust figsize according to your need
+            color_blank_space="same",        # use same color to fill blank space
+            slice_colors=slice_colors,       # color for individual slices
+            value_colors=text_colors,        # color for the value-text
+            value_bck_colors=slice_colors,   # color for the blank spaces
+            blank_alpha=0.4,                 # alpha for blank-space colors
+            kwargs_slices=dict(
+            edgecolor="#F2F2F2", zorder=2, linewidth=1),    # values to be used when plotting slices
+            kwargs_params=dict(color="#000000", fontsize=14, va="center"),   # values to be used when adding parameter
+            kwargs_values=dict(
+                color="#000000", fontsize=11,
+                zorder=3,
+                bbox=dict(
+                edgecolor="#000000", facecolor="cornflowerblue",
+                boxstyle="round,pad=0.2", lw=1
                 )
             )                                # values to be used when adding parameter-values
         )
     
     # add title
-    fig.text(
-            0.515, 0.940, "Compétences numériques : {}".format(names), size=20,
-            ha="center", color="#000000"
+        fig.text(
+                0.515, 0.940, "Compétences numériques : {}".format(names), size=20,
+                ha="center", color="#000000"
         )
     
     
-    plt.show()
+        plt.show()
     
     
     
