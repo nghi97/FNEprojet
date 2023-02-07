@@ -79,7 +79,7 @@ def plot(names):
     names=list(names)
     min_range = [0, 0, 0, 0, 0]
     max_range = [100, 100, 100, 100, 100]
-    for i in range(len(names)-1):
+    for i in range(len(names)):
         rep=scoring.loc[scoring['Nom.complet']==names[i],"domaine_01":"domaine_05"].values.tolist()[0]
         baker = PyPizza(
             params=domaines,           # list of parameters
