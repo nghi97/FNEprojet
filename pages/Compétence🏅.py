@@ -59,7 +59,7 @@ repondants = scoring['Nom.complet'].tolist()
 
     
     
-domaines = ["Littération de \nl'information et des données",
+domaines = ["Compréhension de \nl'information et des données",
             'Communication \net collaboration', 
             'Création de contenu', 
             'Sécurité',
@@ -130,7 +130,7 @@ def plot(names):
 st.title("Approfondissement des visualisations des Compétences numériques")
 st.sidebar.markdown("# Compétence :sports_medal:")
 
-st.write("Pour cet approfondissement de la visualisation, nous vous proposons premièrement un graphique permettant une vue d’ensemble des notes des professeurs dans les cinq domaines du questionnaire. En suivant les recommandations du commanditaire nous avons divisé les questions en deux types : celles relevant de la culture, et les autres relevant de la compétence. Nous rappelons ici l’ordre des domaines du référentiel DigComp, dont un récapitulatif se trouve dans les annexes :")
+st.write("Pour cette visualisation, nous vous proposons un graphique permettant une vue d’ensemble des notes pour chaque répondant, dans les cinq domaines du questionnaire.  La note est représentée sur 100. Nous rappelons ici les domaines du référentiel DigComp :")
 st.write("1. Compréhension de l'information et des données")
 st.write("2. Communication et collaboration")
 st.write("3. Création de contenus")
