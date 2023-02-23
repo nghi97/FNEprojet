@@ -127,11 +127,11 @@ def plot(names):
     
     
         
-st.title("Approfondissement des visualisations des Digitales Compétence")
+st.title("Approfondissement des visualisations des Compétences numériques")
 st.sidebar.markdown("# Compétence :sports_medal:")
 
 st.write("Pour cet approfondissement de la visualisation, nous vous proposons premièrement un graphique permettant une vue d’ensemble des notes des professeurs dans les cinq domaines du questionnaire. En suivant les recommandations du commanditaire nous avons divisé les questions en deux types : celles relevant de la culture, et les autres relevant de la compétence. Nous rappelons ici l’ordre des domaines du référentiel DigComp, dont un récapitulatif se trouve dans les annexes :")
-st.write("1. Littératie de l'information et des données")
+st.write("1. Compréhension de l'information et des données")
 st.write("2. Communication et collaboration")
 st.write("3. Création de contenus")
 st.write("4. Sécurité")
